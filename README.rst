@@ -1,4 +1,4 @@
-reiter.events
-*************
+roughrider.cors
+***************
 
-Events subscribe/notify meta component.
+Set CORS policies on your WEB applications.
