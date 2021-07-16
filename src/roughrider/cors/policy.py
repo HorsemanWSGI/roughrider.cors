@@ -1,8 +1,8 @@
-from typing import Optional, Set, NamedTuple, Literal, Tuple
+from typing import Optional, Set, NamedTuple, Literal, Tuple, Iterator
 
 
-HEADER = Tuple[str, str]
-HEADERS = Iterator[HEADER]
+Header = Tuple[str, str]
+Headers = Iterator[Header]
 HTTPVerb = Literal[
     "GET", "HEAD", "PUT", "DELETE", "PATCH", "POST", "OPTIONS"]
 
@@ -17,7 +17,7 @@ class CORSPolicy(NamedTuple):
 
     def headers(self) -> Headers:
         yield "Access-Control-Allow-Origin", self.origin
-        if self.allow_headers:
+        if self.methods:
             values = ", ".join(self.methods)
             yield "Access-Control-Allow-Methods", values
         if self.allow_headers:
