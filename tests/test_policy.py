@@ -2,6 +2,45 @@ import pytest
 from roughrider.cors.policy import CORSPolicy
 
 
+def test_policy():
+    cors1 = CORSPolicy()
+    cors2 = CORSPolicy()
+    assert cors1 == cors2
+    assert not cors1 is cors2
+
+    cors1 = CORSPolicy(
+        methods=['GET', 'POST'],
+        allow_headers=['Accept-Encoding'],
+        expose_headers=['Accept-Encoding'],
+        max_age=36000
+    )
+    assert cors1 != cors2
+
+    cors2 = CORSPolicy(
+        methods=['GET', 'POST'],
+        allow_headers=['Accept-Encoding'],
+        expose_headers=['Accept-Encoding'],
+        max_age=36000
+    )
+    assert cors1 == cors2
+
+    cors2 = CORSPolicy(
+        methods=['GET', 'POST'],
+        allow_headers=['Accept-Encoding'],
+        expose_headers=['Accept-Encoding'],
+        max_age=19000
+    )
+    assert cors1 != cors2
+
+    cors2 = CORSPolicy(
+        methods=['GET', 'POST'],
+        allow_headers=[],
+        expose_headers=['Accept-Encoding'],
+        max_age=36000
+    )
+    assert cors1 != cors2
+
+
 def test_empty_policy():
 
     cors = CORSPolicy()
