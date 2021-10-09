@@ -17,7 +17,7 @@ setup(
     version=version,
     author='Souheil CHELFOUH',
     author_email='trollfot@gmail.com',
-    url='',
+    url='https://github.com/HorsemanWSGI/roughrider.cors',
     download_url='http://pypi.python.org/pypi/roughrider.cors',
     description='CORS Policy for Web applications',
     long_description=(open("README.rst").read() + "\n" +
